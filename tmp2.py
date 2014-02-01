@@ -37,13 +37,14 @@ def parse(s):
 	dgps = Group(ro('Age') + d + ro('Station ID'))('DGPS')
 	checksum = '*' + Word(nums + 'ABCDEF')('CheckSum')
 	valid = oneOf('A V')
+	selection_mode = oneOf('A')('Selection Mode')
 	
 	gga = pref + talker + Literal('GGA')('Type') + d + utc + d + lat + d + long + d + gps_quality + d + num_sats + d + r('Dilution') + d + altitude_m + d + geoid_sep_m + d + dgps + checksum
 	#pprint(grammer)
 	gll = pref + talker + Literal('GLL')('Type') + d + lat + d + long + d + utc + d + valid('Valid1') + d + valid('Valid2') + checksum
-	gsa = pref + talker + Literal('GSA')('Type') + d 
+	gsa = pref + talker + Literal('GSA')('Type') + d + selection_mode + d + r('Mode') + d + ro('Id1') + d + ro('Id2') + d + ro('Id3') + d + ro('Id4') + d + ro('Id5') + d + ro('Id6') + d + ro('Id7') + d + ro('Id8') + d + ro('Id9') + d + ro('Id10') + d + ro('Id11') + d + ro('Id12') + d + ro('PDOP') + d + ro('HDOP') + d + ro('VDOP') + checksum
 	gsv = pref + talker + Literal('GSV')('Type') + d
-	vtg = pref + talker + Literal('VTG')('Type') + d
+	vtg = pref + talker + Literal('VTG')('Type') + d + r('Track Degrees True') + d + 'T' + d + r('Track Degrees Magnetic') + d + 'M' + d + r('Speed Knots') + d + 'N' + d + r('Speed kmh') + d + 'K' + d + 'A' + checksum
 	zda = pref + talker + Literal('ZDA')('Type') + d
 	aam = pref + talker + Literal('AAM')('Type') + d
 	apb = pref + talker + Literal('APB')('Type') + d
@@ -69,8 +70,9 @@ with open(sys.argv[1]) as f:
 	for line in f:
 		n = n+1
 		if line.strip() and not chr(0) in line:
-			print "line (", n, "): ", line
+			print "line (", n, "): ", line.strip()
 			pprint(parse(line))
+			print
 
 #for sentence in testdata.strings:
 #    print sentence
