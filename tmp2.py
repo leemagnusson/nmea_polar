@@ -121,15 +121,15 @@ class DataItem:
         else:
             return str(self.value)
  
-fields = {'Latitude':float,'Longitude':float,
-          'Speed Knots':float,'Magnetic Heading':float,
-          'Wind Angle Relative':float, 'Wind Speed Relative':float,
-          'SOW Knots':float}
+fields = [('Latitude',float),('Longitude',float),
+          ('Speed Knots',float),('Magnetic Heading',float),
+          ('Wind Angle Relative',float), ('Wind Speed Relative',float),
+          ('SOW Knots',float)]
 
 class Data:
     def __init__(self,time):
         self.time = time
-        self.data = {k:DataItem(k,v) for k,v in fields.items()}
+        self.data = {k:DataItem(k,v) for k,v in fields}
     def append(self,d):
         for k,v in d.items():
            # if k not in self.data:
@@ -138,6 +138,8 @@ class Data:
                 self.data[k].append(v)
     def __repr__(self):
         return 'Time: {0}\tData: {1}'.format(self.time,self.data)
+    def to_csv(self):
+        return ', '.join([str(self.data[x[0]]) for x in fields])
 
 
 n = 0
@@ -162,6 +164,10 @@ with open(sys.argv[1]) as f:
                         pprint(d)
 			print
 pprint(dd)
+print
+print ', '.join([x[0] for x in fields])
+for item in dd:
+    print item.to_csv()
 
 #for sentence in testdata.strings:
 #    print sentence
