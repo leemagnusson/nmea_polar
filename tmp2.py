@@ -4,15 +4,25 @@ from pprint import pprint
 import sys
 from pyparsing import *
 import datetime
+import math
 
 
 # parser = lessgps.Parser('lessgps/data/nmea.yaml')
 print sys.argv[1]
 
-def to_latlon(s,l,toks):
+def to_lat(s,l,toks):
     if toks:
         value = float(toks[0][:2]) + float(toks[0][2:])/60 # ddmm.mmmm
-        if toks[1] == 'S' or toks[1] == 'W':
+        if toks[1] == 'S':
+            value *= -1
+        return value
+    else:
+        return 0
+
+def to_lon(s,l,toks):
+    if toks:
+        value = float(toks[0][:3]) + float(toks[0][3:])/60 # dddmm.mmmm
+        if toks[1] == 'W':
             value *= -1
         return value
     else:
@@ -54,8 +64,8 @@ def parse(s):
 	utc = r.setParseAction(to_utc)('Time (UTC)')
 	ns = oneOf('N S')
 	ew = oneOf('E W')
-	lat = (r + d + ns).setParseAction(to_latlon)('Latitude')
-	lon = (r + d + ew).setParseAction(to_latlon)('Longitude')
+	lat = (r + d + ns).setParseAction(to_lat)('Latitude')
+	lon = (r + d + ew).setParseAction(to_lon)('Longitude')
 	num_sats = r('Num Sats')
 	altitude_m = (r('Value') + d + Literal('M')('Unit')).setParseAction(to_dict_value)('Altitude')
 	geoid_sep_m = Group(r('Value') + d + Literal('M')('Unit')).setParseAction(to_dict_value)('Geoidal Separation')
@@ -85,22 +95,49 @@ def parse(s):
 	dpt = pref + talker + Literal('DPT')('Type') + d
 	mtw = pref + talker + Literal('MTW')('Type') + d
 	vlw = pref + talker + Literal('VLW')('Type') + d
-	vhw = pref + talker + Literal('VHW')('Type') + d
-	hdg = pref + talker + Literal('HDG')('Type') + d
-	mwv = pref + talker + Literal('MWV')('Type') + d
+	vhw = pref + talker + Literal('VHW')('Type') + d + r('Water Heading Degrees True') + d + 'T' + d + r('Water Heading Degrees Magnetic') + d + 'M' + d + r('SOW Knots') + d + 'N'
+	hdg = pref + talker + Literal('HDG')('Type') + d + r('Magnetic Heading')
+	mwv = pref + talker + Literal('MWV')('Type') + d + r('Wind Angle Relative') + d + 'R' + d + r('Wind Speed Relative') + d + 'N'
+      #  mwvt = pref + talker + Literal('MWV')('Type') + d + r('Wind Angle True') + d + 'T'
 	
 	grammer = gga | gll | gsa | gsv | vtg | zda | aam | apb | bod | bwc | bwr | rmb | rmc | xte | dbt | dpt | mtw | vlw | vhw | hdg | mwv
 	return grammer.parseString(s).asDict()
 
+
+
+class DataItem:
+    def __init__(self,name,type):
+        self.name = name
+        self.value = []
+        self.type = type
+    def append(self,value):
+        self.value.append(self.type(value))
+    def __repr__(self):
+        if self.type is float:
+            if self.value:
+                return str(sum(self.value)/len(self.value))
+            else:
+                return ''
+        else:
+            return str(self.value)
+ 
+fields = {'Latitude':float,'Longitude':float,
+          'Speed Knots':float,'Magnetic Heading':float,
+          'Wind Angle Relative':float, 'Wind Speed Relative':float,
+          'SOW Knots':float}
+
 class Data:
     def __init__(self,time):
-        self.speed = 0
         self.time = time
+        self.data = {k:DataItem(k,v) for k,v in fields.items()}
     def append(self,d):
-        if 'Speed Knots' in d:
-            self.speed = d['Speed Knots']
+        for k,v in d.items():
+           # if k not in self.data:
+           #     self.data[k] = DataItem(k)
+            if k in self.data:
+                self.data[k].append(v)
     def __repr__(self):
-        return 'Time: {0}\tSpeed Knots: {1}'.format(self.time,self.speed)
+        return 'Time: {0}\tData: {1}'.format(self.time,self.data)
 
 
 n = 0
