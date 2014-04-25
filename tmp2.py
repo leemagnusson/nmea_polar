@@ -5,6 +5,7 @@ import sys
 from pyparsing import *
 import datetime
 
+
 # parser = lessgps.Parser('lessgps/data/nmea.yaml')
 print sys.argv[1]
 
@@ -91,14 +92,39 @@ def parse(s):
 	grammer = gga | gll | gsa | gsv | vtg | zda | aam | apb | bod | bwc | bwr | rmb | rmc | xte | dbt | dpt | mtw | vlw | vhw | hdg | mwv
 	return grammer.parseString(s).asDict()
 
+class Data:
+    def __init__(self,time):
+        self.speed = 0
+        self.time = time
+    def append(self,d):
+        if 'Speed Knots' in d:
+            self.speed = d['Speed Knots']
+    def __repr__(self):
+        return 'Time: {0}\tSpeed Knots: {1}'.format(self.time,self.speed)
+
+
 n = 0
+last_time = None
+dd = []
 with open(sys.argv[1]) as f:
 	for line in f:
 		n = n+1
 		if line.strip() and not chr(0) in line:
 			print "line (", n, "): ", line.strip()
-			pprint(parse(line))
+			d = parse(line)
+			
+			if 'Time (UTC)' in d:
+                            if d['Time (UTC)'] != last_time:
+                                last_time = d['Time (UTC)'] 
+                                print "\n********** New time **********\n", last_time
+                                dd.append(Data(last_time))
+
+                        if last_time:
+                            dd[-1].append(d)
+
+                        pprint(d)
 			print
+pprint(dd)
 
 #for sentence in testdata.strings:
 #    print sentence
