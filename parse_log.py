@@ -14,7 +14,9 @@ print args.file
 tar = tarfile.open(args.file[0], 'r')
 print [x for x in tar]
 a = list(tar)
-tar.extract(a[2],'tmp')
+#tar.extract(a[2],'tmp')
 
-parse_file.parse_file('tmp/{0}'.format(a[2].name),\
-                      'tmp/{0}.csv'.format(a[2].name))
+for item in a:
+    tar.extract(item,'tmp')
+    parse_file.parse_file('tmp/{0}'.format(item.name),\
+                      'tmp/{0}.csv'.format(item.name))
