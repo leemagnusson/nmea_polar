@@ -83,7 +83,8 @@ def parse(s):
 	gsv = pref + talker + Literal('GSV')('Type') + d
 	vtg = pref + talker + Literal('VTG')('Type') + d + r('Track Degrees True') + d + 'T' + d + r('Track Degrees Magnetic') + d + 'M' + d + r('Speed Knots') + d + 'N' + d + r('Speed kmh') + d + 'K' + d + 'A' + checksum
 	zda = pref + talker + Literal('ZDA')('Type') + d + dt + d + r('Offset') + d + ro('Unknown') + checksum
-	aam = pref + talker + Literal('AAM')('Type') + d + arrival('Arrival Circle') + d + arrival('Perpendicular Past Waypoint') + d + r('Arrival circle radius') + d + 'N' + d + Word(alphanums)('Waypoint ID') + checksum
+	aam = pref + talker + Literal('AAM')('Type') + d + arrival('Arrival Circle') + d + arrival('Perpendicular Past Waypoint') + \
+                                                       d + r('Arrival circle radius') + d + 'N' + d + Optional(Word(alphanums))('Waypoint ID') + checksum
 	apb = pref + talker + Literal('APB')('Type') + d
 	bod = pref + talker + Literal('BOD')('Type') + d
 	bwc = pref + talker + Literal('BWC')('Type') + d
@@ -97,11 +98,17 @@ def parse(s):
 	vlw = pref + talker + Literal('VLW')('Type') + d
 	vhw = pref + talker + Literal('VHW')('Type') + d + r('Water Heading Degrees True') + d + 'T' + d + r('Water Heading Degrees Magnetic') + d + 'M' + d + r('SOW Knots') + d + 'N'
 	hdg = pref + talker + Literal('HDG')('Type') + d + r('Magnetic Heading')
-	mwv = pref + talker + Literal('MWV')('Type') + d + r('Wind Angle Relative') + d + 'R' + d + r('Wind Speed Relative') + d + 'N'
+	mwv = pref + talker + Literal('MWV')('Type') + d + ro('Wind Angle Relative') + d + 'R' + d + ro('Wind Speed Relative') + \
+                                                       d + 'N'
       #  mwvt = pref + talker + Literal('MWV')('Type') + d + r('Wind Angle True') + d + 'T'
 	
 	grammer = gga | gll | gsa | gsv | vtg | zda | aam | apb | bod | bwc | bwr | rmb | rmc | xte | dbt | dpt | mtw | vlw | vhw | hdg | mwv
-	return grammer.parseString(s).asDict()
+        try:
+            return grammer.parseString(s).asDict()
+	except Exception as e:
+            print e
+            print s
+            return {}
 
 
 
@@ -144,33 +151,38 @@ class Data:
 
 
 
-def parse_file(file):
+def parse_file(file,file_out):
     n = 0
     last_time = None
     dd = []
-    with open(file) as f:
+    with open(file) as f, open(file_out,'w') as fout:
+        fout.write(', '.join([x[0] for x in fields]) + '\n')
 	for line in f:
 		n = n+1
 		if line.strip() and not chr(0) in line:
-			print "line (", n, "): ", line.strip()
+			#print "line (", n, "): ", line.strip()
 			d = parse(line)
 			
 			if 'Time (UTC)' in d:
                             if d['Time (UTC)'] != last_time:
                                 last_time = d['Time (UTC)'] 
-                                print "\n********** New time **********\n", last_time
+                            #    print "\n********** New time **********\n", last_time
+                                print last_time
                                 dd.append(Data(last_time))
+                                if len(dd) > 1:
+                                    print dd[-2].to_csv()
+                                    fout.write(dd[-2].to_csv() + '\n')
+                                    fout.flush()
 
                         if last_time:
                             dd[-1].append(d)
 
-                        pprint(d)
-			print
-    pprint(dd)
-    print
-    print ', '.join([x[0] for x in fields])
-    for item in dd:
-        print item.to_csv()
+                        #pprint(d)
+			#print
+#    pprint(dd)
+#    print
+
+            
 
 #for sentence in testdata.strings:
 #    print sentence
