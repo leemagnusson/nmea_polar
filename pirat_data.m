@@ -1,16 +1,32 @@
 %%
 
-wa  = WindAngleRelative3*pi/180;
-ws = WindSpeedRelative3;
-sow = SOWKnots3;
+war = [];
+wsr = [];
+sow = [];
 
-bad_inds = isnan(ws);
-ws(bad_inds) = [];
-wa(bad_inds) = [];
+files = ls('tmp/*.csv');
+
+for i = 1:size(files,1)
+    [Latitude,Longitude,SpeedKnots,MagneticHeading, ...
+        WindAngleRelative,WindSpeedRelative,SOWKnots] = importfile(['tmp/' files(i,:)]);
+
+    war = [war;WindAngleRelative*pi/180];
+    wsr = [wsr;WindSpeedRelative];
+    sow = [sow;SOWKnots];
+end
+bad_inds = isnan(wsr) | (war < 30*pi/180) | (war > 330*pi/180) | isnan(sow);
+wsr(bad_inds) = [];
+war(bad_inds) = [];
 sow(bad_inds) = [];
 
+y = wsr.*sin(war);
+x = wsr.*cos(war) - sow;
+
+ws = sqrt(x.^2 + y.^2);
+wa = atan2(y,x);
+
 figure(1)
-polar(WindAngleRelative2*pi/180,SOWKnots2,'*')
+polar(wa,sow,'*')
 
 wa_i = linspace(0,2*pi,100)';
 %wind_speed = linspace(0,max(ws),50)';

@@ -54,8 +54,8 @@ def to_float(toks):
 	print 'in to_float'
 	print toks
 
-def parse(s):
-	d = Suppress(',')
+def define_grammer():
+    	d = Suppress(',')
 	pref = LineStart() + '$'
 	talker = Word(alphas, exact=2)('Talker')
 	r = Word('+-.' + nums).setParseAction(to_float)
@@ -98,11 +98,19 @@ def parse(s):
 	vlw = pref + talker + Literal('VLW')('Type') + d
 	vhw = pref + talker + Literal('VHW')('Type') + d + r('Water Heading Degrees True') + d + 'T' + d + r('Water Heading Degrees Magnetic') + d + 'M' + d + r('SOW Knots') + d + 'N'
 	hdg = pref + talker + Literal('HDG')('Type') + d + r('Magnetic Heading')
-	mwv = pref + talker + Literal('MWV')('Type') + d + ro('Wind Angle Relative') + d + 'R' + d + ro('Wind Speed Relative') + \
-                                                       d + 'N'
+	mwv = pref + talker + Literal('MWV')('Type') + d + ((ro('Wind Angle Relative') + d + 'R' + d + \
+                                                            ro('Wind Speed Relative')) | \
+                                                           (ro('Wind Angle True') + d + 'T' + d + \
+                                                            ro('Wind Speed True')))  + d + 'N'
+	mwd = pref + talker + Literal('MWD')('Type') + d
       #  mwvt = pref + talker + Literal('MWV')('Type') + d + r('Wind Angle True') + d + 'T'
 	
-	grammer = gga | gll | gsa | gsv | vtg | zda | aam | apb | bod | bwc | bwr | rmb | rmc | xte | dbt | dpt | mtw | vlw | vhw | hdg | mwv
+	return (gga | gll | gsa | gsv | vtg | zda | aam | apb | bod | bwc | bwr | rmb | rmc | xte | \
+                dbt | dpt | mtw | vlw | vhw | hdg | mwv | mwd)
+
+grammer = define_grammer()
+
+def parse(s):
         try:
             return grammer.parseString(s).asDict()
 	except Exception as e:
@@ -172,7 +180,7 @@ def parse_file(file,file_out):
                                 if len(dd) > 1:
                                     print dd[-2].to_csv()
                                     fout.write(dd[-2].to_csv() + '\n')
-                                    fout.flush()
+                                    #fout.flush()
 
                         if last_time:
                             dd[-1].append(d)
@@ -182,6 +190,8 @@ def parse_file(file,file_out):
 #    pprint(dd)
 #    print
 
+if __name__ == '__main__':
+    parse_file(sys.argv[1],'tmp.csv')
             
 
 #for sentence in testdata.strings:
