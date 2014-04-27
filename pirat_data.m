@@ -20,7 +20,8 @@ for i = 1:size(files,1)
 end
 
 %%
-bad_inds = isnan(wsr) | (war < 20*pi/180) | (war > 340*pi/180) | isnan(sow);
+no_zone = 15;
+bad_inds = isnan(wsr) | (war < no_zone*pi/180) | (war > (360-no_zone)*pi/180) | isnan(sow);
 wsr(bad_inds) = [];
 war(bad_inds) = [];
 sow(bad_inds) = [];
@@ -75,7 +76,11 @@ figure(5); clf;
 num_points = 50;
 cmap = jet(num_points);
 h = polar([0 2*pi], [0 max(sow)]);
-delete(h)
+ph=findall(gca,'type','patch');
+set(ph,'facecolor',[0,0,0],'edgecolor',[1,1,1]);
+polar_lines = [findall(gca,'Type','line');findall(gca,'Type','text')];
+polar_text = findall(gca,'Type','text');
+
 hold on;
 ws_bins = linspace(0,max(ws),num_points+1);
 for i = 1:num_points
@@ -84,10 +89,21 @@ for i = 1:num_points
      
     set(h,'MarkerEdgeColor',cmap(i,:),'MarkerSize',2)
 end
-
+set(gca,'Color',[0 0 0])
 caxis([0 max(ws)])
 colorbar
+set(gcf,'Color',[0 0 0])
+set(gca,'Color',[0 0 0])
 
+set(polar_text,'HorizontalAlignment','center','VerticalAlignment','middle','FontSize',14);
+for i = 1:length(polar_text)
+    set(polar_text(i),'String',strrep(get(polar_text(i),'String'),' ',''));
+end
+text2 = copyobj(polar_text,gca);
+set(text2,'FontSize',18);
+set(polar_lines,'Color',.8*[1 1 1])
+uistack(polar_lines,'top')
+delete(h)
 figure(6);
 plot(lon,lat,'.')
 axis equal
