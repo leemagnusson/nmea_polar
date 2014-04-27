@@ -32,6 +32,11 @@ x = wsr.*cos(war) - sow;
 ws = sqrt(x.^2 + y.^2);
 wa = atan2(y,x);
 
+bad_inds2 = ws < 5;
+ws(bad_inds2) = [];
+wa(bad_inds2) = [];
+sow(bad_inds2) = [];
+
 figure(1)
 polar(wa,sow,'*')
 
@@ -82,7 +87,7 @@ polar_lines = [findall(gca,'Type','line');findall(gca,'Type','text')];
 polar_text = findall(gca,'Type','text');
 
 hold on;
-ws_bins = linspace(0,max(ws),num_points+1);
+ws_bins = linspace(min(ws),max(ws),num_points+1);
 for i = num_points:-1:1
     inds = ws > ws_bins(i) & ws < ws_bins(i+1);
     h = polar(wa(inds),sow(inds),'*');%,'MarkerFaceColor',cmap(i,:))
@@ -90,7 +95,7 @@ for i = num_points:-1:1
     set(h,'MarkerEdgeColor',cmap(i,:),'MarkerSize',2)
 end
 set(gca,'Color',[0 0 0])
-caxis([0 max(ws)])
+caxis([min(ws) max(ws)])
 colorbar
 set(gcf,'Color',[0 0 0])
 set(gca,'Color',[0 0 0])
