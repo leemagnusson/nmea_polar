@@ -1,7 +1,7 @@
 
 import tarfile
 import argparse
-import parse_file
+import parse_file2
 import os.path
 
 parser = argparse.ArgumentParser(description='convert nmea to csv')
@@ -18,9 +18,9 @@ a = list(tar)
 #tar.extract(a[2],'tmp')
 
 for item in a:
-    if os.path.isfile('tmp/' + item.name):
+    if os.path.isfile('tmp2/' + item.name):
         print 'item exists: ' + item.name
     else:
-        tar.extract(item,'tmp')
-        parse_file.parse_file('tmp/{0}'.format(item.name),\
-                          'tmp/{0}.csv'.format(item.name))
+        tar.extract(item,'tmp2')
+        parse_file2.parse_file('tmp2/{0}'.format(item.name),\
+                          'tmp2/{0}.csv'.format(item.name))

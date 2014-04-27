@@ -35,6 +35,6 @@ nosetests.xml
 .project
 .pydevproject
 
-tmp/
+tmp*/
 tmp.csv
 *.asv

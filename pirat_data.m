@@ -6,11 +6,11 @@ sow = [];
 lat = [];
 lon = [];
 
-files = ls('tmp/*.csv');
+files = ls('tmp2/*.csv');
 
 for i = 1:size(files,1)
-    [Latitude,Longitude,SpeedKnots,MagneticHeading, ...
-        WindAngleRelative,WindSpeedRelative,SOWKnots] = importfile(['tmp/' files(i,:)]);
+    [UTC,Latitude,Longitude,SpeedKnots,MagneticHeading,...
+        WindAngleRelative,WindSpeedRelative,SOWKnots] = importfile2(['tmp2/' files(i,:)]);
 
     war = [war;WindAngleRelative*pi/180];
     wsr = [wsr;WindSpeedRelative];
@@ -83,7 +83,7 @@ polar_text = findall(gca,'Type','text');
 
 hold on;
 ws_bins = linspace(0,max(ws),num_points+1);
-for i = 1:num_points
+for i = num_points:-1:1
     inds = ws > ws_bins(i) & ws < ws_bins(i+1);
     h = polar(wa(inds),sow(inds),'*');%,'MarkerFaceColor',cmap(i,:))
      
