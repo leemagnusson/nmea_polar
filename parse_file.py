@@ -108,6 +108,7 @@ def define_grammer():
 	return (gga | gll | gsa | gsv | vtg | zda | aam | apb | bod | bwc | bwr | rmb | rmc | xte | \
                 dbt | dpt | mtw | vlw | vhw | hdg | mwv | mwd)
 
+#ParserElement.enablePackrat()
 grammer = define_grammer()
 
 def parse(s):
