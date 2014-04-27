@@ -108,7 +108,12 @@ text2 = copyobj(polar_text,gca);
 set(text2,'FontSize',18);
 set(polar_lines,'Color',.8*[1 1 1])
 uistack(polar_lines,'top')
+
+polar_pirat
+
 delete(h)
+
+
 figure(6);
 plot(lon,lat,'.')
 axis equal
