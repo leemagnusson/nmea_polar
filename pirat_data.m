@@ -88,7 +88,8 @@ polar_text = findall(gca,'Type','text');
 
 hold on;
 ws_bins = linspace(min(ws),max(ws),num_points+1);
-for i = num_points:-1:1
+%for i = num_points:-1:1
+for i = 1:num_points   
     inds = ws > ws_bins(i) & ws < ws_bins(i+1);
     h = polar(wa(inds),sow(inds),'*');%,'MarkerFaceColor',cmap(i,:))
      

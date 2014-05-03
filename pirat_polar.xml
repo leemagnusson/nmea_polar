@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Polar>
+   <PolarCurve>
+      <PolarCurveIndex value="6"/>
+      <PolarItem>
+         <Angle value="10"/>
+         <Value value="1"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="30"/>
+         <Value value="3.4833"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="35"/>
+         <Value value="4.013"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="40"/>
+         <Value value="4.4934"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="45"/>
+         <Value value="4.918"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="52"/>
+         <Value value="5.4062"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="60"/>
+         <Value value="5.798"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="75"/>
+         <Value value="6.1172"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="90"/>
+         <Value value="6.1654"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="110"/>
+         <Value value="6.1089"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="120"/>
+         <Value value="5.7813"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="135"/>
+         <Value value="5.0014"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="150"/>
+         <Value value="4.1763"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="160"/>
+         <Value value="3.8005"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="170"/>
+         <Value value="3.6046"/>
+      </PolarItem>
+   </PolarCurve>
+   <PolarCurve>
+      <PolarCurveIndex value="8"/>
+      <PolarItem>
+         <Angle value="10"/>
+         <Value value="1"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="30"/>
+         <Value value="4.0604"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="35"/>
+         <Value value="4.7023"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="40"/>
+         <Value value="5.2679"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="45"/>
+         <Value value="5.7438"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="52"/>
+         <Value value="6.2338"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="60"/>
+         <Value value="6.5395"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="75"/>
+         <Value value="6.7784"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="90"/>
+         <Value value="6.8781"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="110"/>
+         <Value value="6.8729"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="120"/>
+         <Value value="6.6989"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="135"/>
+         <Value value="6.1707"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="150"/>
+         <Value value="5.2417"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="160"/>
+         <Value value="4.7539"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="170"/>
+         <Value value="4.493"/>
+      </PolarItem>
+   </PolarCurve>
+   <PolarCurve>
+      <PolarCurveIndex value="10"/>
+      <PolarItem>
+         <Angle value="10"/>
+         <Value value="1"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="30"/>
+         <Value value="4.6985"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="35"/>
+         <Value value="5.3058"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="40"/>
+         <Value value="5.8019"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="45"/>
+         <Value value="6.1947"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="52"/>
+         <Value value="6.5862"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="60"/>
+         <Value value="6.8545"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="75"/>
+         <Value value="7.1443"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="90"/>
+         <Value value="7.2144"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="110"/>
+         <Value value="7.326"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="120"/>
+         <Value value="7.2202"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="135"/>
+         <Value value="6.8493"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="150"/>
+         <Value value="6.1739"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="160"/>
+         <Value value="5.5994"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="170"/>
+         <Value value="5.2141"/>
+      </PolarItem>
+   </PolarCurve>
+   <PolarCurve>
+      <PolarCurveIndex value="12"/>
+      <PolarItem>
+         <Angle value="10"/>
+         <Value value="1"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="30"/>
+         <Value value="5.0275"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="35"/>
+         <Value value="5.6189"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="40"/>
+         <Value value="6.082"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="45"/>
+         <Value value="6.4354"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="52"/>
+         <Value value="6.7822"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="60"/>
+         <Value value="7.0395"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="75"/>
+         <Value value="7.377"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="90"/>
+         <Value value="7.4735"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="110"/>
+         <Value value="7.6579"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="120"/>
+         <Value value="7.6287"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="135"/>
+         <Value value="7.3275"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="150"/>
+         <Value value="6.7989"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="160"/>
+         <Value value="6.4437"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="170"/>
+         <Value value="6.1784"/>
+      </PolarItem>
+   </PolarCurve>
+   <PolarCurve>
+      <PolarCurveIndex value="14"/>
+      <PolarItem>
+         <Angle value="10"/>
+         <Value value="1"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="30"/>
+         <Value value="5.2216"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="35"/>
+         <Value value="5.8045"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="40"/>
+         <Value value="6.2495"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="45"/>
+         <Value value="6.5823"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="52"/>
+         <Value value="6.9085"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="60"/>
+         <Value value="7.1642"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="75"/>
+         <Value value="7.5235"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="90"/>
+         <Value value="7.7088"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="110"/>
+         <Value value="7.9069"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="120"/>
+         <Value value="7.9664"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="135"/>
+         <Value value="7.7419"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="150"/>
+         <Value value="7.261"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="160"/>
+         <Value value="6.9639"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="170"/>
+         <Value value="6.7484"/>
+      </PolarItem>
+   </PolarCurve>
+   <PolarCurve>
+      <PolarCurveIndex value="16"/>
+      <PolarItem>
+         <Angle value="10"/>
+         <Value value="1"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="30"/>
+         <Value value="5.3345"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="35"/>
+         <Value value="5.9134"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="40"/>
+         <Value value="6.3496"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="45"/>
+         <Value value="6.6724"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="52"/>
+         <Value value="6.9903"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="60"/>
+         <Value value="7.2493"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="75"/>
+         <Value value="7.6304"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="90"/>
+         <Value value="7.893"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="110"/>
+         <Value value="8.0826"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="120"/>
+         <Value value="8.2474"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="135"/>
+         <Value value="8.1136"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="150"/>
+         <Value value="7.6677"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="160"/>
+         <Value value="7.3908"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="170"/>
+         <Value value="7.1913"/>
+      </PolarItem>
+   </PolarCurve>
+   <PolarCurve>
+      <PolarCurveIndex value="20"/>
+      <PolarItem>
+         <Angle value="10"/>
+         <Value value="1"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="30"/>
+         <Value value="5.3793"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="35"/>
+         <Value value="5.9622"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="40"/>
+         <Value value="6.402"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="45"/>
+         <Value value="6.7294"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="52"/>
+         <Value value="7.0574"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="60"/>
+         <Value value="7.335"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="75"/>
+         <Value value="7.7653"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="90"/>
+         <Value value="8.1099"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="110"/>
+         <Value value="8.3682"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="120"/>
+         <Value value="8.658"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="135"/>
+         <Value value="8.7698"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="150"/>
+         <Value value="8.4151"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="160"/>
+         <Value value="8.1494"/>
+      </PolarItem>
+      <PolarItem>
+         <Angle value="170"/>
+         <Value value="7.9492"/>
+      </PolarItem>
+   </PolarCurve>
+</Polar>
